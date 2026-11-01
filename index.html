@@ -11,6 +11,8 @@
   <style>
     :root {
       --color-bg: #ffffff;
+      --color-bg-rgb: 255, 255, 255;
+      --fade-height: 48px;
       --color-text: #202124;
       --color-text-secondary: #4d5156;
       --color-text-muted: #70757a;
@@ -32,6 +34,11 @@
 
     * {
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :focus:not(:focus-visible) {
+      outline: none;
     }
 
     html,
@@ -168,6 +175,7 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      min-height: 100dvh;
     }
 
     .home-topbar {
@@ -194,6 +202,7 @@
       flex-direction: column;
       align-items: center;
       padding-top: calc(16vh - 20px);
+      padding-top: calc(16dvh - 20px);
     }
 
     .home-logo {
@@ -276,6 +285,81 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      min-height: 100dvh;
+    }
+
+    .page-fade {
+      position: fixed;
+      left: 0;
+      right: 0;
+      z-index: 5;
+      height: var(--fade-height);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+      background: linear-gradient(to bottom,
+        rgb(var(--color-bg-rgb)) 0%,
+        rgba(var(--color-bg-rgb), 0.90) 20%,
+        rgba(var(--color-bg-rgb), 0.65) 40%,
+        rgba(var(--color-bg-rgb), 0.35) 60%,
+        rgba(var(--color-bg-rgb), 0.15) 80%,
+        rgba(var(--color-bg-rgb), 0) 100%
+      );
+    }
+
+    .page-fade-top {
+      top: 0;
+    }
+
+    .page-fade-bottom {
+      bottom: 0;
+      transform: scaleY(-1);
+    }
+
+    .page-fade.is-visible {
+      opacity: 1;
+    }
+
+    @property --fade-start {
+      syntax: "<length>";
+      inherits: false;
+      initial-value: 0px;
+    }
+
+    @property --fade-end {
+      syntax: "<length>";
+      inherits: false;
+      initial-value: 0px;
+    }
+
+    .scroll-fade-x {
+      --fade-start: 0px;
+      --fade-end: 0px;
+      transition: --fade-start 0.2s, --fade-end 0.2s;
+      -webkit-mask-image: var(--fade-mask);
+      mask-image: var(--fade-mask);
+      --fade-mask: linear-gradient(to right,
+        rgba(0, 0, 0, 0) 0,
+        rgba(0, 0, 0, 0.10) calc(var(--fade-start) * 0.2),
+        rgba(0, 0, 0, 0.35) calc(var(--fade-start) * 0.4),
+        rgba(0, 0, 0, 0.65) calc(var(--fade-start) * 0.6),
+        rgba(0, 0, 0, 0.85) calc(var(--fade-start) * 0.8),
+        rgba(0, 0, 0, 1) var(--fade-start),
+        rgba(0, 0, 0, 1) calc(100% - var(--fade-end)),
+        rgba(0, 0, 0, 0.85) calc(100% - var(--fade-end) * 0.8),
+        rgba(0, 0, 0, 0.65) calc(100% - var(--fade-end) * 0.6),
+        rgba(0, 0, 0, 0.35) calc(100% - var(--fade-end) * 0.4),
+        rgba(0, 0, 0, 0.10) calc(100% - var(--fade-end) * 0.2),
+        rgba(0, 0, 0, 0) 100%
+      );
+    }
+
+    .scroll-fade-x.has-fade-start {
+      --fade-start: var(--fade-height);
+    }
+
+    .scroll-fade-x.has-fade-end {
+      --fade-end: var(--fade-height);
     }
 
     .serp-header {
@@ -924,6 +1008,8 @@
   </svg>
 
   <div class="loading-bar" id="loading-bar"></div>
+  <div class="page-fade page-fade-top" id="page-fade-top"></div>
+  <div class="page-fade page-fade-bottom" id="page-fade-bottom"></div>
 
   <div class="home" id="home">
     <header class="home-topbar">
@@ -1016,7 +1102,7 @@
       </div>
     </header>
 
-    <nav class="tabs">
+    <nav class="tabs scroll-fade-x">
       <a class="tab is-active">전체</a>
       <a class="tab">이미지</a>
       <a class="tab">동영상</a>
@@ -1125,6 +1211,8 @@ Return 8 results, 4 people_also_ask items, 8 related searches.`;
       clearButton: $("#clear-button"),
       results: $("#results"),
       loadingBar: $("#loading-bar"),
+      pageFadeTop: $("#page-fade-top"),
+      pageFadeBottom: $("#page-fade-bottom"),
       settingsModal: $("#settings-modal"),
       settingsForm: $("#settings-form"),
       settingsCancel: $("#settings-cancel"),
@@ -1788,9 +1876,43 @@ Return 8 results, 4 people_also_ask items, 8 related searches.`;
       }
     });
 
+    function updatePageFades() {
+      const page = document.documentElement;
+      const scrollTop = page.scrollTop;
+      const scrollBottom = page.scrollHeight - page.clientHeight - scrollTop;
+      const isScrollable = page.scrollHeight - page.clientHeight > 1;
+
+      elements.pageFadeTop.classList.toggle("is-visible", isScrollable && scrollTop > 1);
+      elements.pageFadeBottom.classList.toggle("is-visible", isScrollable && scrollBottom > 1);
+    }
+
+    function updateHorizontalFade(container) {
+      const scrollLeft = container.scrollLeft;
+      const scrollRight = container.scrollWidth - container.clientWidth - scrollLeft;
+      const isScrollable = container.scrollWidth - container.clientWidth > 1;
+
+      container.classList.toggle("has-fade-start", isScrollable && scrollLeft > 1);
+      container.classList.toggle("has-fade-end", isScrollable && scrollRight > 1);
+    }
+
+    function setUpScrollFades() {
+      window.addEventListener("scroll", updatePageFades, { passive: true });
+      window.addEventListener("resize", updatePageFades);
+      new ResizeObserver(updatePageFades).observe(document.body);
+      updatePageFades();
+
+      $$(".scroll-fade-x").forEach((container) => {
+        const update = () => updateHorizontalFade(container);
+        container.addEventListener("scroll", update, { passive: true });
+        new ResizeObserver(update).observe(container);
+        update();
+      });
+    }
+
     elements.results.addEventListener("click", handleResultsClick);
     document.addEventListener("keydown", handleKeydown);
     window.addEventListener("hashchange", handleRoute);
+    setUpScrollFades();
 
     handleRoute();
   </script>
