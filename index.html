@@ -1,293 +1,1100 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Google</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%23EA4335' d='M24 9.5c3.5 0 6.6 1.2 9 3.5l6.7-6.7C35.6 2.4 30.2 0 24 0 14.6 0 6.6 5.4 2.6 13.2l7.8 6.1C12.3 13.6 17.7 9.5 24 9.5z'/%3E%3Cpath fill='%234285F4' d='M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.5 5.8c4.4-4 6.8-10 6.8-17.2z'/%3E%3Cpath fill='%23FBBC05' d='M10.4 28.7c-.5-1.4-.8-3-.8-4.7s.3-3.3.8-4.7l-7.8-6.1C.9 16.5 0 20.1 0 24s.9 7.5 2.6 10.8l7.8-6.1z'/%3E%3Cpath fill='%2334A853' d='M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.5-5.8c-2.1 1.4-4.8 2.3-8.4 2.3-6.3 0-11.7-4.1-13.6-9.8l-7.8 6.1C6.6 42.6 14.6 48 24 48z'/%3E%3C/svg%3E">
-<style>
-:root{
-  --bg:#fff;
-  --text:#202124;
-  --text2:#4d5156;
-  --text3:#70757a;
-  --link:#1a0dab;
-  --visited:#681da8;
-  --border:#dadce0;
-  --chip:#f1f3f4;
-  --shadow:0 1px 6px rgba(32,33,36,.28);
-  --blue:#4285f4;
-  --red:#ea4335;
-  --yellow:#fbbc05;
-  --green:#34a853;
-}
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:arial,sans-serif;font-size:14px}
-a{color:inherit;text-decoration:none}
-button{font-family:inherit}
-[hidden]{display:none!important}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Google</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%23EA4335' d='M24 9.5c3.5 0 6.6 1.2 9 3.5l6.7-6.7C35.6 2.4 30.2 0 24 0 14.6 0 6.6 5.4 2.6 13.2l7.8 6.1C12.3 13.6 17.7 9.5 24 9.5z'/%3E%3Cpath fill='%234285F4' d='M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.5 5.8c4.4-4 6.8-10 6.8-17.2z'/%3E%3Cpath fill='%23FBBC05' d='M10.4 28.7c-.5-1.4-.8-3-.8-4.7s.3-3.3.8-4.7l-7.8-6.1C.9 16.5 0 20.1 0 24s.9 7.5 2.6 10.8l7.8-6.1z'/%3E%3Cpath fill='%2334A853' d='M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.5-5.8c-2.1 1.4-4.8 2.3-8.4 2.3-6.3 0-11.7-4.1-13.6-9.8l-7.8 6.1C6.6 42.6 14.6 48 24 48z'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --color-bg: #ffffff;
+      --color-text: #202124;
+      --color-text-secondary: #4d5156;
+      --color-text-muted: #70757a;
+      --color-icon: #5f6368;
+      --color-link: #1a0dab;
+      --color-border: #dadce0;
+      --color-chip: #f1f3f4;
+      --color-chip-hover: #e8eaed;
+      --color-footer: #f2f2f2;
+      --color-accent: #1a73e8;
+      --google-blue: #4285f4;
+      --google-red: #ea4335;
+      --google-yellow: #fbbc05;
+      --google-green: #34a853;
+      --font-body: arial, sans-serif;
+      --font-brand: "Google Sans", "Product Sans", "Segoe UI", Roboto, arial, sans-serif;
+      --content-indent: 180px;
+    }
 
-.logo{font-family:"Google Sans","Product Sans","Segoe UI",Roboto,arial,sans-serif;font-weight:500;letter-spacing:-.04em;user-select:none;cursor:pointer;line-height:1}
-.logo .b{color:var(--blue)}.logo .r{color:var(--red)}.logo .y{color:var(--yellow)}.logo .g{color:var(--green)}
+    * {
+      box-sizing: border-box;
+    }
 
-.topbar{display:flex;justify-content:flex-end;align-items:center;gap:15px;height:60px;padding:6px 16px 0}
-.topbar a.tl{font-size:13px;color:rgba(0,0,0,.87)}
-.topbar a.tl:hover{text-decoration:underline}
-.iconbtn{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;border:0;background:transparent;color:#5f6368}
-.iconbtn:hover{background:rgba(60,64,67,.08)}
-.avatar{width:32px;height:32px;border-radius:50%;background:#1a73e8;color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;cursor:pointer;border:0;outline:4px solid transparent}
-.avatar:hover{outline-color:rgba(60,64,67,.08)}
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
 
-#home{min-height:100vh;display:flex;flex-direction:column}
-.home-main{flex:1;display:flex;flex-direction:column;align-items:center;padding-top:calc(16vh - 20px)}
-.home-main .logo{font-size:92px;margin-bottom:26px}
-.sbox{display:flex;align-items:center;width:100%;max-width:584px;height:46px;border:1px solid #dfe1e5;border-radius:24px;padding:0 6px 0 14px;background:#fff}
-.sbox:hover,.sbox:focus-within{box-shadow:var(--shadow);border-color:rgba(223,225,229,0)}
-.sbox .sicon{color:#9aa0a6;display:flex;margin-right:12px}
-.sbox input{flex:1;border:0;outline:0;font-size:16px;color:var(--text);background:transparent;height:100%;min-width:0;font-family:inherit}
-.sbox .tools{display:flex;align-items:center;gap:2px}
-.sbox .tools .iconbtn{width:40px;height:40px}
-.sbox .clear{color:#70757a}
-.sbox .divider{width:1px;height:65%;background:#dadce0;margin:0 4px}
-.home-btns{display:flex;gap:11px;margin-top:29px;justify-content:center}
-.gbtn{background:#f8f9fa;border:1px solid #f8f9fa;border-radius:4px;color:#3c4043;font-size:14px;height:36px;padding:0 16px;cursor:pointer}
-.gbtn:hover{border-color:#dadce0;box-shadow:0 1px 1px rgba(0,0,0,.1);color:#202124}
-.home-lang{margin-top:28px;font-size:13px;color:#4d5156}
-.home-lang a{color:#1a0dab;margin:0 3px}
-.home-lang a:hover{text-decoration:underline}
-footer.hf{background:#f2f2f2;font-size:15px;color:#70757a}
-footer.hf .country{padding:15px 30px;border-bottom:1px solid #dadce0}
-footer.hf .links{display:flex;justify-content:space-between;flex-wrap:wrap;padding:0 20px}
-footer.hf .links div{display:flex;flex-wrap:wrap}
-footer.hf .links a{padding:15px;font-size:14px;color:#70757a}
-footer.hf .links a:hover{text-decoration:underline}
+    body {
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-size: 14px;
+    }
 
-#serp{min-height:100vh;display:flex;flex-direction:column}
-.shead{display:flex;align-items:center;padding:20px 16px 0 28px;gap:0}
-.shead .logo{font-size:30px;width:150px;flex-shrink:0;padding-top:2px}
-.shead .sbox{max-width:692px;height:46px;flex:1;box-shadow:0 2px 5px 1px rgba(64,60,67,.16);border:0}
-.shead .sbox:hover,.shead .sbox:focus-within{box-shadow:0 2px 8px 1px rgba(64,60,67,.24)}
-.shead .sbox .sicon{display:none}
-.shead .sbox .search-go{color:#4285f4}
-.shead .right{margin-left:auto;display:flex;align-items:center;gap:8px;padding-left:16px}
-.tabs{display:flex;gap:4px;padding-left:178px;margin-top:12px;border-bottom:1px solid #ebebeb;overflow-x:auto;scrollbar-width:none}
-.tabs::-webkit-scrollbar{display:none}
-.tabs a{padding:0 12px;height:44px;display:flex;align-items:center;font-size:14px;color:#5f6368;white-space:nowrap;border-bottom:3px solid transparent;cursor:pointer}
-.tabs a:hover{color:#202124}
-.tabs a.on{color:#1f1f1f;border-bottom-color:#1f1f1f;font-weight:500}
-.tabs .tools-link{margin-left:auto;margin-right:16px}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-.content{padding-left:180px;padding-right:16px;flex:1}
-.col{max-width:652px}
-.stats{color:#70757a;font-size:14px;padding:14px 0 10px;line-height:43px;height:43px;padding:0}
+    button {
+      font-family: inherit;
+    }
 
+    [hidden] {
+      display: none !important;
+    }
 
-.res{margin-bottom:30px;line-height:1.58}
-.res .src{display:flex;align-items:center;gap:12px;margin-bottom:5px;cursor:pointer}
-.fav{width:28px;height:28px;border-radius:50%;border:1px solid #d2d2d2;background:#f1f3f4;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.fav span{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700}
-.src .meta{display:flex;flex-direction:column;line-height:20px;min-width:0}
-.src .site{font-size:14px;color:#202124}
-.src .url{font-size:12px;color:#4d5156;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:18px}
-.src .dots{color:#4d5156;margin-left:4px;font-size:16px;line-height:1}
-.res h3{margin:0;font-size:20px;font-weight:400;line-height:1.3;color:var(--link);padding-top:5px;margin-bottom:3px;display:inline-block;cursor:pointer}
-.res h3:hover{text-decoration:underline}
-.res .snip{color:#4d5156;font-size:14px;line-height:22px}
-.res .snip em{font-style:normal;font-weight:700;color:#5f6368}
-.res .date{color:#70757a}
+    .icon {
+      display: block;
+      flex-shrink: 0;
+    }
 
-.paa{margin:4px 0 32px}
-.paa h2,.rel h2{font-size:20px;font-weight:400;color:#202124;margin:0 0 12px;font-family:arial,sans-serif;line-height:1.3}
-.paa-item{border-top:1px solid #dadce0}
-.paa-item:last-child{border-bottom:1px solid #dadce0}
-.paa-q{display:flex;justify-content:space-between;align-items:center;padding:0;min-height:48px;cursor:pointer;font-size:16px;color:#202124;line-height:1.4;gap:12px}
-.paa-q svg{flex-shrink:0;transition:transform .2s;color:#5f6368}
-.paa-item.open .paa-q svg{transform:rotate(180deg)}
-.paa-a{display:none;padding:4px 0 18px;font-size:14px;line-height:22px;color:#4d5156}
-.paa-item.open .paa-a{display:block}
-.paa-a .src{margin-top:14px}
-.paa-a .src .site{font-size:14px}
+    .logo {
+      font-family: var(--font-brand);
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      cursor: pointer;
+      user-select: none;
+    }
 
-.rel{margin:10px 0 30px}
-.rel-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px}
-.rel-grid a{display:flex;align-items:center;gap:14px;background:#f1f3f4;border-radius:24px;padding:0 16px;height:48px;font-size:14px;color:#202124;cursor:pointer;overflow:hidden}
-.rel-grid a:hover{background:#e8eaed}
-.rel-grid a svg{flex-shrink:0;color:#70757a}
-.rel-grid a span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.rel-grid a b{font-weight:700}
+    .blue   { color: var(--google-blue); }
+    .red    { color: var(--google-red); }
+    .yellow { color: var(--google-yellow); }
+    .green  { color: var(--google-green); }
 
-.pager{display:flex;justify-content:center;align-items:flex-end;margin:20px 0 40px;user-select:none}
-.pager .pl{display:flex;flex-direction:column;align-items:center;cursor:pointer;min-width:20px}
-.pager .pl .letter{font-family:"Product Sans","Google Sans",arial,sans-serif;font-size:42px;line-height:44px;letter-spacing:-2px;font-weight:500}
-.pager .pl .num{font-size:14px;color:#1a0dab;margin-top:6px;height:20px}
-.pager .pl:hover .num{text-decoration:underline}
-.pager .pl.cur .num{color:#202124;font-weight:400}
-.pager .pl.cur{cursor:default}
-.pager .nav{font-size:14px;color:#1a0dab;display:flex;flex-direction:column;align-items:center;margin:0 10px;cursor:pointer}
-.pager .nav .arrow{font-size:28px;line-height:44px;height:44px}
-.pager .nav:hover span:last-child{text-decoration:underline}
+    .icon-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: var(--color-icon);
+      cursor: pointer;
+    }
 
-footer.sf{background:#f2f2f2;border-top:1px solid #dadce0;color:#70757a;font-size:14px}
-footer.sf .loc{padding:14px 0 14px 180px;border-bottom:1px solid #dadce0;display:flex;gap:8px;flex-wrap:wrap}
-footer.sf .loc b{color:#202124;font-weight:400}
-footer.sf .loc .dot{width:10px;height:10px;border-radius:50%;background:#70757a;display:inline-block;margin-top:4px}
-footer.sf .fl{padding:14px 0 14px 180px;display:flex;gap:28px;flex-wrap:wrap}
-footer.sf a:hover{text-decoration:underline}
+    .icon-button:hover {
+      background: rgba(60, 64, 67, 0.08);
+    }
 
-.skel{animation:pulse 1.4s ease-in-out infinite}
-.skel div{background:#f1f3f4;border-radius:6px;margin-bottom:10px}
-@keyframes pulse{50%{opacity:.5}}
-.loadbar{position:fixed;top:0;left:0;height:3px;background:#4285f4;width:0;z-index:10;transition:width 8s cubic-bezier(.1,.7,.2,1)}
-.loadbar.go{width:85%}
-.loadbar.done{width:100%;transition:width .2s;opacity:0;transition:width .2s,opacity .4s .2s}
+    .avatar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border: 0;
+      border-radius: 50%;
+      outline: 4px solid transparent;
+      background: var(--color-accent);
+      color: #ffffff;
+      font-size: 15px;
+      cursor: pointer;
+    }
 
-.err{padding:20px 0;line-height:1.7;color:#202124;font-size:16px}
-.err small{display:block;color:#70757a;font-size:13px;margin-top:8px;word-break:break-all}
+    .avatar:hover {
+      outline-color: rgba(60, 64, 67, 0.08);
+    }
 
-#modal{position:fixed;inset:0;background:rgba(32,33,36,.6);display:flex;align-items:center;justify-content:center;z-index:20;padding:16px}
-.mbox{background:#fff;border-radius:28px;padding:24px;width:100%;max-width:440px;box-shadow:0 4px 24px rgba(0,0,0,.25)}
-.mbox h2{margin:0 0 6px;font-family:"Google Sans",arial,sans-serif;font-weight:400;font-size:22px}
-.mbox p{margin:0 0 18px;color:#5f6368;line-height:1.5;font-size:14px}
-.mbox label{display:block;font-size:12px;color:#5f6368;margin:12px 0 6px}
-.mbox input,.mbox select{width:100%;height:44px;border:1px solid #dadce0;border-radius:8px;padding:0 12px;font-size:14px;font-family:inherit;outline:0;background:#fff;color:#202124}
-.mbox input:focus,.mbox select:focus{border-color:#1a73e8;box-shadow:0 0 0 1px #1a73e8}
-.mbtns{display:flex;justify-content:flex-end;gap:8px;margin-top:22px}
-.mbtns button{height:40px;padding:0 20px;border-radius:20px;border:0;font-size:14px;cursor:pointer;font-weight:500}
-.mbtns .cancel{background:transparent;color:#1a73e8}
-.mbtns .cancel:hover{background:#f1f6fe}
-.mbtns .save{background:#1a73e8;color:#fff}
-.mbtns .save:hover{background:#1b66c9}
+    .search-box {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      max-width: 584px;
+      height: 46px;
+      padding: 0 6px 0 14px;
+      border: 1px solid #dfe1e5;
+      border-radius: 24px;
+      background: #ffffff;
+    }
 
-@media (max-width:900px){
-  .content,footer.sf .loc,footer.sf .fl{padding-left:16px}
-  .tabs{padding-left:16px}
-  .shead{padding:12px 12px 0;flex-wrap:wrap;gap:10px}
-  .shead .logo{width:auto;font-size:26px}
-  .shead .right{order:2}
-  .shead .sbox{order:3;flex-basis:100%}
-  .rel-grid{grid-template-columns:1fr}
-  .pager .pl:nth-child(n+8){display:none}
-}
-@media (max-width:600px){
-  .home-main .logo{font-size:64px}
-  .home-main{padding-left:16px;padding-right:16px}
-  .topbar a.tl{display:none}
-  .pager .pl .letter{font-size:32px}
-}
-</style>
+    .search-box:hover,
+    .search-box:focus-within {
+      border-color: transparent;
+      box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+    }
+
+    .search-box input {
+      flex: 1;
+      min-width: 0;
+      height: 100%;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: var(--color-text);
+      font-family: inherit;
+      font-size: 16px;
+    }
+
+    .search-box-leading {
+      display: flex;
+      margin-right: 12px;
+      color: #9aa0a6;
+    }
+
+    .search-box-tools {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .search-box-divider {
+      width: 1px;
+      height: 28px;
+      margin: 0 4px;
+      background: var(--color-border);
+    }
+
+    .home {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .home-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 15px;
+      height: 60px;
+      padding: 6px 16px 0;
+    }
+
+    .home-topbar-link {
+      color: rgba(0, 0, 0, 0.87);
+      font-size: 13px;
+    }
+
+    .home-topbar-link:hover {
+      text-decoration: underline;
+    }
+
+    .home-main {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      align-items: center;
+      padding-top: calc(16vh - 20px);
+    }
+
+    .home-logo {
+      margin-bottom: 26px;
+      font-size: 92px;
+    }
+
+    .home-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 11px;
+      margin-top: 29px;
+    }
+
+    .home-button {
+      height: 36px;
+      padding: 0 16px;
+      border: 1px solid #f8f9fa;
+      border-radius: 4px;
+      background: #f8f9fa;
+      color: #3c4043;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .home-button:hover {
+      border-color: var(--color-border);
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+      color: var(--color-text);
+    }
+
+    .home-language {
+      margin-top: 28px;
+      color: var(--color-text-secondary);
+      font-size: 13px;
+    }
+
+    .home-language a {
+      margin: 0 3px;
+      color: var(--color-link);
+    }
+
+    .home-language a:hover {
+      text-decoration: underline;
+    }
+
+    .home-footer {
+      background: var(--color-footer);
+      color: var(--color-text-muted);
+      font-size: 15px;
+    }
+
+    .home-footer-country {
+      padding: 15px 30px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .home-footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+
+    .home-footer-links div {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .home-footer-links a {
+      padding: 15px;
+      font-size: 14px;
+    }
+
+    .home-footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .serp {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .serp-header {
+      display: flex;
+      align-items: center;
+      padding: 20px 16px 0 28px;
+    }
+
+    .serp-logo {
+      flex-shrink: 0;
+      width: 150px;
+      padding-top: 2px;
+      font-size: 30px;
+    }
+
+    .serp-header .search-box {
+      flex: 1;
+      max-width: 692px;
+      border: 0;
+      box-shadow: 0 2px 5px 1px rgba(64, 60, 67, 0.16);
+    }
+
+    .serp-header .search-box:hover,
+    .serp-header .search-box:focus-within {
+      box-shadow: 0 2px 8px 1px rgba(64, 60, 67, 0.24);
+    }
+
+    .serp-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: auto;
+      padding-left: 16px;
+    }
+
+    .submit-button {
+      color: var(--google-blue);
+    }
+
+    .clear-button {
+      color: var(--color-text-muted);
+    }
+
+    .tabs {
+      display: flex;
+      gap: 4px;
+      margin-top: 12px;
+      padding-left: calc(var(--content-indent) - 2px);
+      border-bottom: 1px solid #ebebeb;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab {
+      display: flex;
+      align-items: center;
+      height: 44px;
+      padding: 0 12px;
+      border-bottom: 3px solid transparent;
+      color: var(--color-icon);
+      font-size: 14px;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .tab:hover {
+      color: var(--color-text);
+    }
+
+    .tab.is-active {
+      border-bottom-color: #1f1f1f;
+      color: #1f1f1f;
+      font-weight: 500;
+    }
+
+    .tab-tools {
+      margin-left: auto;
+      margin-right: 16px;
+    }
+
+    .serp-content {
+      flex: 1;
+      padding: 0 16px 0 var(--content-indent);
+    }
+
+    .results {
+      max-width: 652px;
+    }
+
+    .result-stats {
+      height: 43px;
+      color: var(--color-text-muted);
+      font-size: 14px;
+      line-height: 43px;
+    }
+
+    .result {
+      margin-bottom: 30px;
+      line-height: 1.58;
+    }
+
+    .result-source {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 5px;
+      cursor: pointer;
+    }
+
+    .favicon {
+      display: flex;
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border: 1px solid #d2d2d2;
+      border-radius: 50%;
+      background: var(--color-chip);
+    }
+
+    .favicon span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .result-source-text {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      line-height: 20px;
+    }
+
+    .result-site {
+      color: var(--color-text);
+      font-size: 14px;
+    }
+
+    .result-url {
+      overflow: hidden;
+      color: var(--color-text-secondary);
+      font-size: 12px;
+      line-height: 18px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .result-more {
+      margin-left: 4px;
+      color: var(--color-text-secondary);
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    .result-title {
+      display: inline-block;
+      margin: 0 0 3px;
+      padding-top: 5px;
+      color: var(--color-link);
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1.3;
+      cursor: pointer;
+    }
+
+    .result-title:hover {
+      text-decoration: underline;
+    }
+
+    .result-snippet {
+      color: var(--color-text-secondary);
+      font-size: 14px;
+      line-height: 22px;
+    }
+
+    .result-snippet em {
+      color: var(--color-icon);
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    .result-date {
+      color: var(--color-text-muted);
+    }
+
+    .section-title {
+      margin: 0 0 12px;
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1.3;
+    }
+
+    .questions {
+      margin: 4px 0 32px;
+    }
+
+    .question {
+      border-top: 1px solid var(--color-border);
+    }
+
+    .question:last-child {
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .question-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 48px;
+      color: var(--color-text);
+      font-size: 16px;
+      line-height: 1.4;
+      cursor: pointer;
+    }
+
+    .question-header .icon {
+      color: var(--color-icon);
+      transition: transform 0.2s;
+    }
+
+    .question.is-open .question-header .icon {
+      transform: rotate(180deg);
+    }
+
+    .question-answer {
+      display: none;
+      padding: 4px 0 18px;
+      color: var(--color-text-secondary);
+      font-size: 14px;
+      line-height: 22px;
+    }
+
+    .question.is-open .question-answer {
+      display: block;
+    }
+
+    .question-answer .result-source {
+      margin-top: 14px;
+    }
+
+    .question-answer .result-title {
+      margin-top: 6px;
+      font-size: 18px;
+    }
+
+    .related {
+      margin: 10px 0 30px;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 16px;
+    }
+
+    .related-chip {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      height: 48px;
+      padding: 0 16px;
+      overflow: hidden;
+      border-radius: 24px;
+      background: var(--color-chip);
+      color: var(--color-text);
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .related-chip:hover {
+      background: var(--color-chip-hover);
+    }
+
+    .related-chip .icon {
+      color: var(--color-text-muted);
+    }
+
+    .related-chip span {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .pager {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      margin: 20px 0 40px;
+      user-select: none;
+    }
+
+    .pager-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 20px;
+      cursor: pointer;
+    }
+
+    .pager-item.is-static,
+    .pager-item.is-current {
+      cursor: default;
+    }
+
+    .pager-letter {
+      font-size: 42px;
+      line-height: 44px;
+      letter-spacing: -2px;
+    }
+
+    .pager-number {
+      height: 20px;
+      margin-top: 6px;
+      color: var(--color-link);
+      font-size: 14px;
+    }
+
+    .pager-item:not(.is-current):hover .pager-number {
+      text-decoration: underline;
+    }
+
+    .pager-item.is-current .pager-number {
+      color: var(--color-text);
+    }
+
+    .pager-nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 10px;
+      color: var(--color-link);
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .pager-arrow {
+      height: 44px;
+      font-size: 28px;
+      line-height: 44px;
+    }
+
+    .pager-nav:hover span:last-child {
+      text-decoration: underline;
+    }
+
+    .serp-footer {
+      border-top: 1px solid var(--color-border);
+      background: var(--color-footer);
+      color: var(--color-text-muted);
+      font-size: 14px;
+    }
+
+    .serp-footer-location,
+    .serp-footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 14px 0 14px var(--content-indent);
+    }
+
+    .serp-footer-location {
+      gap: 8px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .serp-footer-location b {
+      color: var(--color-text);
+      font-weight: 400;
+    }
+
+    .serp-footer-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin-top: 4px;
+      border-radius: 50%;
+      background: var(--color-text-muted);
+    }
+
+    .serp-footer-links {
+      gap: 28px;
+    }
+
+    .serp-footer a:hover {
+      text-decoration: underline;
+    }
+
+    .skeleton {
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+
+    .skeleton-line {
+      height: 14px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      background: var(--color-chip);
+    }
+
+    .skeleton-line.is-title {
+      width: 70%;
+      height: 20px;
+    }
+
+    .skeleton-line.is-site    { width: 40%; }
+    .skeleton-line.is-full    { width: 100%; }
+    .skeleton-line.is-partial { width: 85%; margin-bottom: 30px; }
+
+    @keyframes pulse {
+      50% {
+        opacity: 0.5;
+      }
+    }
+
+    .loading-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      width: 0;
+      height: 3px;
+      background: var(--google-blue);
+    }
+
+    .loading-bar.is-loading {
+      width: 85%;
+      transition: width 8s cubic-bezier(0.1, 0.7, 0.2, 1);
+    }
+
+    .loading-bar.is-done {
+      width: 100%;
+      opacity: 0;
+      transition: width 0.2s, opacity 0.4s 0.2s;
+    }
+
+    .error-message {
+      padding: 20px 0;
+      color: var(--color-text);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .error-message small {
+      display: block;
+      margin-top: 8px;
+      color: var(--color-text-muted);
+      font-size: 13px;
+      word-break: break-all;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      background: rgba(32, 33, 36, 0.6);
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 440px;
+      padding: 24px;
+      border-radius: 28px;
+      background: #ffffff;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .modal-title {
+      margin: 0 0 6px;
+      font-family: var(--font-brand);
+      font-size: 22px;
+      font-weight: 400;
+    }
+
+    .modal-description {
+      margin: 0 0 18px;
+      color: var(--color-icon);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .modal-label {
+      display: block;
+      margin: 12px 0 6px;
+      color: var(--color-icon);
+      font-size: 12px;
+    }
+
+    .modal-field {
+      width: 100%;
+      height: 44px;
+      padding: 0 12px;
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      outline: 0;
+      background: #ffffff;
+      color: var(--color-text);
+      font-family: inherit;
+      font-size: 14px;
+    }
+
+    .modal-field:focus {
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 1px var(--color-accent);
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 22px;
+    }
+
+    .modal-button {
+      height: 40px;
+      padding: 0 20px;
+      border: 0;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .modal-button.is-secondary {
+      background: transparent;
+      color: var(--color-accent);
+    }
+
+    .modal-button.is-secondary:hover {
+      background: #f1f6fe;
+    }
+
+    .modal-button.is-primary {
+      background: var(--color-accent);
+      color: #ffffff;
+    }
+
+    .modal-button.is-primary:hover {
+      background: #1b66c9;
+    }
+
+    @media (max-width: 900px) {
+      :root {
+        --content-indent: 16px;
+      }
+
+      .tabs {
+        padding-left: 16px;
+      }
+
+      .serp-header {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 12px 12px 0;
+      }
+
+      .serp-logo {
+        width: auto;
+        font-size: 26px;
+      }
+
+      .serp-header-actions {
+        order: 2;
+      }
+
+      .serp-header .search-box {
+        flex-basis: 100%;
+        order: 3;
+      }
+
+      .related-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pager-item:nth-child(n + 8) {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .home-logo {
+        font-size: 64px;
+      }
+
+      .home-main {
+        padding-right: 16px;
+        padding-left: 16px;
+      }
+
+      .home-topbar-link {
+        display: none;
+      }
+
+      .pager-letter {
+        font-size: 32px;
+      }
+    }
+  </style>
 </head>
 <body>
-<div class="loadbar" id="loadbar"></div>
+  <svg hidden>
+    <symbol id="icon-search" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+    </symbol>
+    <symbol id="icon-mic" viewBox="0 0 24 24">
+      <path fill="#4285f4" d="M12 15c1.66 0 3-1.31 3-2.97V6c0-1.66-1.34-3-3-3S9 4.34 9 6v6.03C9 13.69 10.34 15 12 15z"/>
+      <path fill="#34a853" d="M11 18.08h2V21h-2z"/>
+      <path fill="#fbbc05" d="M7.05 16.87c-1.27-1.33-2.05-2.83-2.05-4.87h2c0 1.45.56 2.42 1.47 3.38l-1.42 1.49z"/>
+      <path fill="#ea4335" d="M12 16.93a4.97 5.25 0 0 1-3.54-1.55l-1.41 1.49c1.26 1.34 3.02 2.13 4.95 2.13 3.87 0 6.99-2.92 6.99-7h-1.99c0 2.92-2.24 4.93-5 4.93z"/>
+    </symbol>
+    <symbol id="icon-lens" viewBox="0 0 192 192">
+      <circle fill="#34a853" cx="144.07" cy="144" r="16"/>
+      <circle fill="#4285f4" cx="96.07" cy="104" r="24"/>
+      <path fill="#ea4335" d="M24 135.2c0 18.11 14.69 32.8 32.8 32.8H96v-16H56.8c-9.26 0-16.8-7.54-16.8-16.8V120H24v15.2z"/>
+      <path fill="#fbbc05" d="M168 72.8c0-18.11-14.69-32.8-32.8-32.8H116l20 16h-.8c9.26 0 16.8 7.54 16.8 16.8V80h16v-7.2z"/>
+      <path fill="#4285f4" d="M112 24l-8 16H56.8C38.69 40 24 54.69 24 72.8V92h16V72.8c0-9.26 7.54-16.8 16.8-16.8h78.4L112 24z"/>
+    </symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+    </symbol>
+    <symbol id="icon-apps" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M6 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm6 12c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-6 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0-6c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm6 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm4-8c0 1.1.9 2 2 2s2-.9 2-2-.9-2-2-2-2 .9-2 2zm-4 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm6 6c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 6c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/>
+    </symbol>
+    <symbol id="icon-gear" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M13.85 22.25h-3.7c-.74 0-1.36-.54-1.45-1.27l-.27-1.89c-.27-.14-.53-.29-.79-.46l-1.8.72c-.7.26-1.47-.03-1.81-.65L2.2 15.53c-.35-.66-.2-1.44.36-1.88l1.53-1.19c-.01-.15-.02-.3-.02-.46 0-.15.01-.31.02-.46l-1.52-1.19c-.59-.45-.74-1.26-.37-1.88l1.85-3.19c.34-.62 1.11-.9 1.79-.63l1.81.73c.26-.17.52-.32.78-.46l.27-1.91c.09-.7.71-1.25 1.44-1.25h3.7c.74 0 1.36.54 1.45 1.27l.27 1.89c.27.14.53.29.79.46l1.8-.72c.71-.26 1.48.03 1.82.65l1.84 3.18c.36.66.2 1.44-.36 1.88l-1.52 1.19c.01.15.02.3.02.46s-.01.31-.02.46l1.52 1.19c.56.45.72 1.23.37 1.86l-1.86 3.22c-.34.62-1.11.9-1.8.63l-1.8-.72c-.26.17-.52.32-.78.46l-.27 1.91c-.1.68-.72 1.22-1.46 1.22zm-3.23-2h2.76l.37-2.55.53-.22c.44-.18.88-.44 1.34-.78l.45-.34 2.38.96 1.38-2.4-2.03-1.58.07-.56c.03-.26.06-.51.06-.78s-.03-.53-.06-.78l-.07-.56 2.03-1.58-1.39-2.4-2.39.96-.45-.35c-.42-.32-.87-.58-1.33-.77l-.52-.22-.37-2.55h-2.76l-.37 2.55-.53.21c-.44.19-.88.44-1.34.79l-.45.33-2.38-.95-1.39 2.39 2.03 1.58-.07.56a7 7 0 0 0-.06.79c0 .26.02.53.06.78l.07.56-2.03 1.58 1.38 2.4 2.39-.96.45.35c.43.33.86.58 1.33.77l.53.22.38 2.55z"/>
+      <circle fill="currentColor" cx="12" cy="12" r="3.5"/>
+    </symbol>
+    <symbol id="icon-chevron-down" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"/>
+    </symbol>
+  </svg>
 
-<div id="home">
-  <div class="topbar">
-    <a class="tl" href="#">Gmail</a>
-    <a class="tl" href="#">이미지</a>
-    <button class="iconbtn" aria-label="Google 앱"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm6 12c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-6 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0-6c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm6 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm4-8c0 1.1.9 2 2 2s2-.9 2-2-.9-2-2-2-2 .9-2 2zm-4 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm6 6c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 6c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg></button>
-    <button class="avatar" data-settings aria-label="설정">G</button>
+  <div class="loading-bar" id="loading-bar"></div>
+
+  <div class="home" id="home">
+    <header class="home-topbar">
+      <a class="home-topbar-link" href="#">Gmail</a>
+      <a class="home-topbar-link" href="#">이미지</a>
+      <button class="icon-button" type="button" aria-label="Google 앱">
+        <svg class="icon" width="24" height="24"><use href="#icon-apps"/></svg>
+      </button>
+      <button class="avatar" type="button" data-open-settings aria-label="설정">G</button>
+    </header>
+
+    <main class="home-main">
+      <div class="logo home-logo" data-go-home>
+        <span class="blue">G</span><span class="red">o</span><span class="yellow">o</span><span class="blue">g</span><span class="green">l</span><span class="red">e</span>
+      </div>
+
+      <form class="search-box" id="home-form" autocomplete="off">
+        <span class="search-box-leading">
+          <svg class="icon" width="20" height="20"><use href="#icon-search"/></svg>
+        </span>
+        <input id="home-query" type="text" aria-label="검색" title="검색">
+        <div class="search-box-tools">
+          <button class="icon-button" type="button" aria-label="음성 검색">
+            <svg class="icon" width="24" height="24"><use href="#icon-mic"/></svg>
+          </button>
+          <button class="icon-button" type="button" aria-label="이미지로 검색">
+            <svg class="icon" width="24" height="24"><use href="#icon-lens"/></svg>
+          </button>
+        </div>
+      </form>
+
+      <div class="home-buttons">
+        <button class="home-button" type="button" id="search-button">Google 검색</button>
+        <button class="home-button" type="button" id="lucky-button">I'm Feeling Lucky</button>
+      </div>
+
+      <div class="home-language">Google 제공 서비스: <a href="#">English</a></div>
+    </main>
+
+    <footer class="home-footer">
+      <div class="home-footer-country">대한민국</div>
+      <div class="home-footer-links">
+        <div>
+          <a href="#">광고</a>
+          <a href="#">비즈니스</a>
+          <a href="#">검색의 원리</a>
+        </div>
+        <div>
+          <a href="#">개인정보처리방침</a>
+          <a href="#">약관</a>
+          <a href="#">설정</a>
+        </div>
+      </div>
+    </footer>
   </div>
-  <div class="home-main">
-    <div class="logo" data-home><span class="b">G</span><span class="r">o</span><span class="y">o</span><span class="b">g</span><span class="g">l</span><span class="r">e</span></div>
-    <form class="sbox" id="homeForm" autocomplete="off">
-      <span class="sicon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></span>
-      <input id="homeQ" type="text" aria-label="검색" title="검색">
-      <div class="tools">
-        <button type="button" class="iconbtn" aria-label="음성 검색"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#4285f4" d="M12 15c1.66 0 3-1.31 3-2.97V6c0-1.66-1.34-3-3-3S9 4.34 9 6v6.03C9 13.69 10.34 15 12 15z"/><path fill="#34a853" d="M11 18.08h2V21h-2z"/><path fill="#fbbc05" d="M7.05 16.87c-1.27-1.33-2.05-2.83-2.05-4.87h2c0 1.45.56 2.42 1.47 3.38l-1.42 1.49z"/><path fill="#ea4335" d="M12 16.93a4.97 5.25 0 0 1-3.54-1.55l-1.41 1.49c1.26 1.34 3.02 2.13 4.95 2.13 3.87 0 6.99-2.92 6.99-7h-1.99c0 2.92-2.24 4.93-5 4.93z"/></svg></button>
-        <button type="button" class="iconbtn" aria-label="이미지로 검색"><svg width="24" height="24" viewBox="0 0 192 192"><rect fill="none" width="192" height="192"/><circle fill="#34a853" cx="144.07" cy="144" r="16"/><circle fill="#4285f4" cx="96.07" cy="104" r="24"/><path fill="#ea4335" d="M24 135.2c0 18.11 14.69 32.8 32.8 32.8H96v-16H56.8c-9.26 0-16.8-7.54-16.8-16.8V120H24v15.2z"/><path fill="#fbbc05" d="M168 72.8c0-18.11-14.69-32.8-32.8-32.8H116l20 16h-.8c9.26 0 16.8 7.54 16.8 16.8V80h16v-7.2z"/><path fill="#4285f4" d="M112 24l-8 16H56.8C38.69 40 24 54.69 24 72.8V92h16V72.8c0-9.26 7.54-16.8 16.8-16.8h78.4L112 24z"/></svg></button>
+
+  <div class="serp" id="serp" hidden>
+    <header class="serp-header">
+      <div class="logo serp-logo" data-go-home>
+        <span class="blue">G</span><span class="red">o</span><span class="yellow">o</span><span class="blue">g</span><span class="green">l</span><span class="red">e</span>
+      </div>
+
+      <form class="search-box" id="serp-form" autocomplete="off">
+        <input id="serp-query" type="text" aria-label="검색">
+        <div class="search-box-tools">
+          <button class="icon-button clear-button" type="button" id="clear-button" aria-label="지우기">
+            <svg class="icon" width="24" height="24"><use href="#icon-close"/></svg>
+          </button>
+          <span class="search-box-divider"></span>
+          <button class="icon-button" type="button" aria-label="음성 검색">
+            <svg class="icon" width="24" height="24"><use href="#icon-mic"/></svg>
+          </button>
+          <button class="icon-button" type="button" aria-label="이미지로 검색">
+            <svg class="icon" width="24" height="24"><use href="#icon-lens"/></svg>
+          </button>
+          <button class="icon-button submit-button" type="submit" aria-label="검색">
+            <svg class="icon" width="24" height="24"><use href="#icon-search"/></svg>
+          </button>
+        </div>
+      </form>
+
+      <div class="serp-header-actions">
+        <button class="icon-button" type="button" aria-label="설정">
+          <svg class="icon" width="24" height="24"><use href="#icon-gear"/></svg>
+        </button>
+        <button class="icon-button" type="button" aria-label="Google 앱">
+          <svg class="icon" width="24" height="24"><use href="#icon-apps"/></svg>
+        </button>
+        <button class="avatar" type="button" data-open-settings aria-label="설정">G</button>
+      </div>
+    </header>
+
+    <nav class="tabs">
+      <a class="tab is-active">전체</a>
+      <a class="tab">이미지</a>
+      <a class="tab">동영상</a>
+      <a class="tab">뉴스</a>
+      <a class="tab">쇼핑</a>
+      <a class="tab">웹</a>
+      <a class="tab">도서</a>
+      <a class="tab">더보기</a>
+      <a class="tab tab-tools">도구</a>
+    </nav>
+
+    <main class="serp-content">
+      <div class="results" id="results"></div>
+    </main>
+
+    <footer class="serp-footer">
+      <div class="serp-footer-location">
+        <b>대한민국</b>
+        <span class="serp-footer-dot"></span>
+        <span>내 IP 주소 기준</span> - <a href="#">위치 업데이트</a>
+      </div>
+      <div class="serp-footer-links">
+        <a href="#">고객센터</a>
+        <a href="#">의견 보내기</a>
+        <a href="#">개인정보처리방침</a>
+        <a href="#">약관</a>
+      </div>
+    </footer>
+  </div>
+
+  <div class="modal" id="settings-modal" hidden>
+    <form class="modal-box" id="settings-form">
+      <h2 class="modal-title">검색 설정</h2>
+      <p class="modal-description">Groq API 키를 입력하세요. 키는 이 브라우저에만 저장되고 Groq API로만 전송됩니다.</p>
+
+      <label class="modal-label" for="api-key-input">Groq API 키</label>
+      <input class="modal-field" id="api-key-input" type="password" placeholder="gsk_..." autocomplete="off" spellcheck="false">
+
+      <label class="modal-label" for="model-select">모델</label>
+      <select class="modal-field" id="model-select">
+        <option value="">자동 선택</option>
+      </select>
+
+      <div class="modal-actions">
+        <button class="modal-button is-secondary" type="button" id="settings-cancel">취소</button>
+        <button class="modal-button is-primary" type="submit">저장</button>
       </div>
     </form>
-    <div class="home-btns">
-      <button class="gbtn" id="btnSearch">Google 검색</button>
-      <button class="gbtn" id="btnLucky">I'm Feeling Lucky</button>
-    </div>
-    <div class="home-lang">Google 제공 서비스: <a href="#">English</a></div>
   </div>
-  <footer class="hf">
-    <div class="country">대한민국</div>
-    <div class="links">
-      <div><a href="#">광고</a><a href="#">비즈니스</a><a href="#">검색의 원리</a></div>
-      <div><a href="#">개인정보처리방침</a><a href="#">약관</a><a href="#">설정</a></div>
-    </div>
-  </footer>
-</div>
 
-<div id="serp" hidden>
-  <div class="shead">
-    <div class="logo" data-home><span class="b">G</span><span class="r">o</span><span class="y">o</span><span class="b">g</span><span class="g">l</span><span class="r">e</span></div>
-    <form class="sbox" id="serpForm" autocomplete="off">
-      <span class="sicon"></span>
-      <input id="serpQ" type="text" aria-label="검색">
-      <div class="tools">
-        <button type="button" class="iconbtn clear" id="clearBtn" aria-label="지우기"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
-        <span class="divider"></span>
-        <button type="button" class="iconbtn" aria-label="음성 검색"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#4285f4" d="M12 15c1.66 0 3-1.31 3-2.97V6c0-1.66-1.34-3-3-3S9 4.34 9 6v6.03C9 13.69 10.34 15 12 15z"/><path fill="#34a853" d="M11 18.08h2V21h-2z"/><path fill="#fbbc05" d="M7.05 16.87c-1.27-1.33-2.05-2.83-2.05-4.87h2c0 1.45.56 2.42 1.47 3.38l-1.42 1.49z"/><path fill="#ea4335" d="M12 16.93a4.97 5.25 0 0 1-3.54-1.55l-1.41 1.49c1.26 1.34 3.02 2.13 4.95 2.13 3.87 0 6.99-2.92 6.99-7h-1.99c0 2.92-2.24 4.93-5 4.93z"/></svg></button>
-        <button type="button" class="iconbtn" aria-label="이미지로 검색"><svg width="24" height="24" viewBox="0 0 192 192"><circle fill="#34a853" cx="144.07" cy="144" r="16"/><circle fill="#4285f4" cx="96.07" cy="104" r="24"/><path fill="#ea4335" d="M24 135.2c0 18.11 14.69 32.8 32.8 32.8H96v-16H56.8c-9.26 0-16.8-7.54-16.8-16.8V120H24v15.2z"/><path fill="#fbbc05" d="M168 72.8c0-18.11-14.69-32.8-32.8-32.8H116l20 16h-.8c9.26 0 16.8 7.54 16.8 16.8V80h16v-7.2z"/><path fill="#4285f4" d="M112 24l-8 16H56.8C38.69 40 24 54.69 24 72.8V92h16V72.8c0-9.26 7.54-16.8 16.8-16.8h78.4L112 24z"/></svg></button>
-        <button type="submit" class="iconbtn search-go" aria-label="검색"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></button>
-      </div>
-    </form>
-    <div class="right">
-      <button class="iconbtn" aria-label="설정"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M13.85 22.25h-3.7c-.74 0-1.36-.54-1.45-1.27l-.27-1.89c-.27-.14-.53-.29-.79-.46l-1.8.72c-.7.26-1.47-.03-1.81-.65L2.2 15.53c-.35-.66-.2-1.44.36-1.88l1.53-1.19c-.01-.15-.02-.3-.02-.46 0-.15.01-.31.02-.46l-1.52-1.19c-.59-.45-.74-1.26-.37-1.88l1.85-3.19c.34-.62 1.11-.9 1.79-.63l1.81.73c.26-.17.52-.32.78-.46l.27-1.91c.09-.7.71-1.25 1.44-1.25h3.7c.74 0 1.36.54 1.45 1.27l.27 1.89c.27.14.53.29.79.46l1.8-.72c.71-.26 1.48.03 1.82.65l1.84 3.18c.36.66.2 1.44-.36 1.88l-1.52 1.19c.01.15.02.3.02.46s-.01.31-.02.46l1.52 1.19c.56.45.72 1.23.37 1.86l-1.86 3.22c-.34.62-1.11.9-1.8.63l-1.8-.72c-.26.17-.52.32-.78.46l-.27 1.91c-.1.68-.72 1.22-1.46 1.22zm-3.23-2h2.76l.37-2.55.53-.22c.44-.18.88-.44 1.34-.78l.45-.34 2.38.96 1.38-2.4-2.03-1.58.07-.56c.03-.26.06-.51.06-.78s-.03-.53-.06-.78l-.07-.56 2.03-1.58-1.39-2.4-2.39.96-.45-.35c-.42-.32-.87-.58-1.33-.77l-.52-.22-.37-2.55h-2.76l-.37 2.55-.53.21c-.44.19-.88.44-1.34.79l-.45.33-2.38-.95-1.39 2.39 2.03 1.58-.07.56a7 7 0 0 0-.06.79c0 .26.02.53.06.78l.07.56-2.03 1.58 1.38 2.4 2.39-.96.45.35c.43.33.86.58 1.33.77l.53.22.38 2.55z"/><circle cx="12" cy="12" r="3.5"/></svg></button>
-      <button class="iconbtn" aria-label="Google 앱"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm6 12c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-6 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0-6c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm6 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm4-8c0 1.1.9 2 2 2s2-.9 2-2-.9-2-2-2-2 .9-2 2zm-4 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm6 6c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 6c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg></button>
-      <button class="avatar" data-settings aria-label="설정">G</button>
-    </div>
-  </div>
-  <nav class="tabs">
-    <a class="on">전체</a><a>이미지</a><a>동영상</a><a>뉴스</a><a>쇼핑</a><a>웹</a><a>도서</a><a>더보기</a>
-    <a class="tools-link">도구</a>
-  </nav>
-  <div class="content">
-    <div class="col" id="results"></div>
-  </div>
-  <footer class="sf">
-    <div class="loc"><b>대한민국</b><span class="dot"></span><span>내 IP 주소 기준</span> - <a href="#">위치 업데이트</a></div>
-    <div class="fl"><a href="#">고객센터</a><a href="#">의견 보내기</a><a href="#">개인정보처리방침</a><a href="#">약관</a></div>
-  </footer>
-</div>
+  <script>
+    const GROQ_API_URL = "https://api.groq.com/openai/v1";
 
-<div id="modal" hidden>
-  <form class="mbox" id="modalForm">
-    <h2>검색 설정</h2>
-    <p>Groq API 키를 입력하세요. 키는 이 브라우저에만 저장되고 Groq API로만 전송됩니다.</p>
-    <label for="keyInput">Groq API 키</label>
-    <input id="keyInput" type="password" placeholder="gsk_..." autocomplete="off" spellcheck="false">
-    <label for="modelInput">모델</label>
-    <select id="modelInput">
-      <option value="">자동 선택</option>
-    </select>
-    <div class="mbtns">
-      <button type="button" class="cancel" id="modalCancel">취소</button>
-      <button type="submit" class="save">저장</button>
-    </div>
-  </form>
-</div>
+    const STORAGE_KEY_API_KEY = "groq_key";
+    const STORAGE_KEY_MODEL = "groq_model";
 
-<script>
-const $ = s => document.querySelector(s);
-const $$ = s => document.querySelectorAll(s);
-const cache = new Map();
-let pendingSearch = null;
-let reqId = 0;
+    const PAGE_COUNT = 10;
+    const TEMPERATURE = 0.6;
+    const MAX_TOKENS = 4096;
 
-const store = {
-  get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : v; } catch { return d; } },
-  set(k, v) { try { localStorage.setItem(k, v); } catch {} }
-};
+    const FAVICON_COLORS = [
+      "#4285f4", "#ea4335", "#34a853", "#f29900", "#a142f4",
+      "#12b5cb", "#e8710a", "#1a73e8", "#d93025", "#188038",
+    ];
 
-const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-const inline = s => esc(s).replace(/\*\*(.+?)\*\*/g, "<em>$1</em>");
-const inlineB = s => esc(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
+    const PREFERRED_MODELS = [
+      "openai/gpt-oss-120b",
+      "llama-3.3-70b-versatile",
+      "moonshotai/kimi-k2-instruct-0905",
+      "moonshotai/kimi-k2-instruct",
+      "qwen/qwen3-32b",
+      "openai/gpt-oss-20b",
+      "meta-llama/llama-4-maverick-17b-128e-instruct",
+      "llama-3.1-8b-instant",
+    ];
 
-const FAV_COLORS = ["#4285f4", "#ea4335", "#34a853", "#f29900", "#a142f4", "#12b5cb", "#e8710a", "#1a73e8", "#d93025", "#188038"];
-function favicon(site) {
-  const s = String(site || "?");
-  let h = 0;
-  for (const ch of s) h = (h * 31 + ch.codePointAt(0)) >>> 0;
-  const letter = s.trim().charAt(0).toUpperCase() || "?";
-  return `<div class="fav"><span style="background:${FAV_COLORS[h % FAV_COLORS.length]}">${esc(letter)}</span></div>`;
-}
+    const NON_CHAT_MODEL_PATTERN = /whisper|tts|guard|playai|orpheus|distil|safeguard|compound|embed|vision-preview/i;
+    const CHAT_MODEL_PATTERN = /gpt-oss|llama|qwen|kimi|gemma|mistral|deepseek/i;
+    const MODEL_ERROR_PATTERN = /model_not_found|decommissioned/i;
 
-const SYSTEM_PROMPT = `You simulate the Google search engine results page. Given a search query, return ONLY a JSON object that looks exactly like what Google would show.
+    const SYSTEM_PROMPT = `You simulate the Google search engine results page. Given a search query, return ONLY a JSON object that looks exactly like what Google would show.
 Rules:
 - Write everything in the same language as the query (Korean query -> Korean output).
 - Results must look like real web pages from plausible, well-known sites relevant to the query (e.g. 나무위키, 위키백과, 네이버 블로그, 티스토리, 브런치, 뉴스사, 공식 사이트, YouTube, Reddit, Stack Overflow, etc. when appropriate).
@@ -300,281 +1107,689 @@ JSON schema:
 {"total":"약 12,300,000개","answer":"...","results":[{"site":"사이트 이름","url":"https://... › ...","title":"페이지 제목","date":""}],"people_also_ask":[{"q":"질문","a":"2-3문장 답변","site":"사이트 이름","url":"https://... › ...","title":"페이지 제목"}],"related":["관련 검색어"]}
 Return 8 results, 4 people_also_ask items, 8 related searches.`;
 
-function splitAnswer(text, n) {
-  const sentences = String(text || "").replace(/\s+/g, " ").trim().split(/(?<=[.!?。])\s+/).filter(Boolean);
-  if (!sentences.length || n < 1) return [];
-  const total = sentences.reduce((a, s) => a + s.length, 0);
-  const chunks = [];
-  let cur = [], acc = 0;
-  for (const s of sentences) {
-    cur.push(s);
-    acc += s.length;
-    if (acc >= total * (chunks.length + 1) / n && chunks.length < n - 1) { chunks.push(cur.join(" ")); cur = []; }
-  }
-  if (cur.length) chunks.push(cur.join(" "));
-  return chunks.map(c => (c.match(/\*\*/g) || []).length % 2 ? c.replace(/\*\*(?!.*\*\*)/, "") : c);
-}
+    const $ = (selector) => document.querySelector(selector);
+    const $$ = (selector) => document.querySelectorAll(selector);
 
-const MODEL_PREFS = ["openai/gpt-oss-120b", "llama-3.3-70b-versatile", "moonshotai/kimi-k2-instruct-0905", "moonshotai/kimi-k2-instruct", "qwen/qwen3-32b", "openai/gpt-oss-20b", "meta-llama/llama-4-maverick-17b-128e-instruct", "llama-3.1-8b-instant"];
-const NON_CHAT = /whisper|tts|guard|playai|orpheus|distil|safeguard|compound|embed|vision-preview/i;
+    const elements = {
+      home: $("#home"),
+      homeForm: $("#home-form"),
+      homeQuery: $("#home-query"),
+      searchButton: $("#search-button"),
+      luckyButton: $("#lucky-button"),
+      serp: $("#serp"),
+      serpForm: $("#serp-form"),
+      serpQuery: $("#serp-query"),
+      clearButton: $("#clear-button"),
+      results: $("#results"),
+      loadingBar: $("#loading-bar"),
+      settingsModal: $("#settings-modal"),
+      settingsForm: $("#settings-form"),
+      settingsCancel: $("#settings-cancel"),
+      apiKeyInput: $("#api-key-input"),
+      modelSelect: $("#model-select"),
+    };
 
-async function listModels(key) {
-  const res = await fetch("https://api.groq.com/openai/v1/models", { headers: { "Authorization": `Bearer ${key}` } });
-  if (!res.ok) throw new Error(`모델 목록 HTTP ${res.status}`);
-  const j = await res.json();
-  return (j.data || []).filter(m => m.active !== false && !NON_CHAT.test(m.id)).map(m => m.id).sort();
-}
+    const resultCache = new Map();
+    let pendingQuery = null;
+    let latestRequestId = 0;
 
-function pickModel(ids) {
-  return MODEL_PREFS.find(m => ids.includes(m))
-    || ids.find(i => /gpt-oss|llama|qwen|kimi|gemma|mistral|deepseek/i.test(i))
-    || ids[0];
-}
+    const storage = {
+      get(key, fallback = "") {
+        try {
+          const value = localStorage.getItem(key);
+          return value === null ? fallback : value;
+        } catch {
+          return fallback;
+        }
+      },
 
-async function resolveModel(key, force) {
-  const saved = store.get("groq_model", "");
-  if (saved && !force) return saved;
-  const ids = await listModels(key);
-  if (!ids.length) throw new Error("사용 가능한 Groq 채팅 모델이 없습니다.");
-  const m = pickModel(ids);
-  store.set("groq_model", m);
-  return m;
-}
+      set(key, value) {
+        try {
+          localStorage.setItem(key, value);
+        } catch {}
+      },
+    };
 
-async function fetchSerp(q, page) {
-  const key = store.get("groq_key", "");
-  if (!key) throw Object.assign(new Error("NO_KEY"), { code: "NO_KEY" });
-  const user = page > 1 ? `검색어: ${q}\n(${page}페이지 결과입니다. 1페이지와 다른, 덜 유명한 사이트들의 결과를 생성하고, answer에는 이 주제에 대한 더 깊이 있는 추가 설명을 쓰세요.)` : `검색어: ${q}`;
-  try {
-    return await callGroq(key, await resolveModel(key, false), user);
-  } catch (e) {
-    if (e.modelError) return await callGroq(key, await resolveModel(key, true), user);
-    throw e;
-  }
-}
+    function escapeHtml(value) {
+      const replacements = {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;",
+      };
+      return String(value ?? "").replace(/[&<>"']/g, (char) => replacements[char]);
+    }
 
-async function callGroq(key, model, user) {
-  const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-    method: "POST",
-    headers: { "Content-Type": "application/json", "Authorization": `Bearer ${key}` },
-    body: JSON.stringify({
-      model,
-      temperature: 0.6,
-      max_tokens: 4096,
-      response_format: { type: "json_object" },
-      messages: [{ role: "system", content: SYSTEM_PROMPT }, { role: "user", content: user }]
-    })
-  });
-  if (!res.ok) {
-    let msg = `HTTP ${res.status}`, code = "";
-    try { const j = await res.json(); msg += ` - ${j.error?.message || ""}`; code = j.error?.code || ""; } catch {}
-    const modelError = res.status === 404 || /model_not_found|decommissioned|model_decommissioned/i.test(code + msg);
-    throw Object.assign(new Error(msg), { code: res.status, modelError });
-  }
-  const j = await res.json();
-  const text = j.choices?.[0]?.message?.content || "{}";
-  const m = text.match(/\{[\s\S]*\}/);
-  return JSON.parse(m ? m[0] : text);
-}
+    function formatEmphasis(text, tag) {
+      return escapeHtml(text).replace(/\*\*(.+?)\*\*/g, `<${tag}>$1</${tag}>`);
+    }
 
-function skeleton() {
-  let h = `<div class="stats">&nbsp;</div><div class="skel">`;
-  for (let i = 0; i < 4; i++) h += `<div style="width:40%;height:14px"></div><div style="width:70%;height:20px"></div><div style="width:100%;height:14px"></div><div style="width:85%;height:14px;margin-bottom:30px"></div>`;
-  return h + `</div>`;
-}
+    function icon(name, size = 24) {
+      return `<svg class="icon" width="${size}" height="${size}"><use href="#icon-${name}"/></svg>`;
+    }
 
-function renderResult(r) {
-  return `<div class="res">
-    <div class="src" data-q="${esc(r.title)}">${favicon(r.site)}<div class="meta"><span class="site">${esc(r.site)}</span><span class="url">${esc(r.url)}</span></div><span class="dots">⋮</span></div>
-    <h3 data-q="${esc(r.title)}">${esc(r.title)}</h3>
-    <div class="snip">${r.date ? `<span class="date">${esc(r.date)} — </span>` : ""}${inline(r.snippet)}</div>
-  </div>`;
-}
+    function renderFavicon(site) {
+      const name = String(site || "?");
 
-function renderPaa(items) {
-  if (!items?.length) return "";
-  return `<div class="paa"><h2>다른 사람들이 함께 찾은 질문</h2>${items.map(p => `
-    <div class="paa-item">
-      <div class="paa-q"><span>${esc(p.q)}</span><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></div>
-      <div class="paa-a">${inlineB(p.a)}
-        ${p.site ? `<div class="src" data-q="${esc(p.title || p.q)}">${favicon(p.site)}<div class="meta"><span class="site">${esc(p.site)}</span><span class="url">${esc(p.url || "")}</span></div></div>
-        ${p.title ? `<h3 style="font-size:18px;color:#1a0dab;margin:6px 0 0;font-weight:400;cursor:pointer" data-q="${esc(p.title)}">${esc(p.title)}</h3>` : ""}` : ""}
-      </div>
-    </div>`).join("")}</div>`;
-}
+      let hash = 0;
+      for (const char of name) {
+        hash = (hash * 31 + char.codePointAt(0)) >>> 0;
+      }
 
-function renderRelated(list, q) {
-  if (!list?.length) return "";
-  const ql = q.toLowerCase();
-  return `<div class="rel"><h2>관련 검색어</h2><div class="rel-grid">${list.map(t => {
-    const s = String(t);
-    const i = s.toLowerCase().indexOf(ql);
-    const label = i >= 0 ? esc(s.slice(0, i)) + esc(s.slice(i, i + q.length)) + `<b>${esc(s.slice(i + q.length))}</b>` : `<b>${esc(s)}</b>`;
-    return `<a data-q="${esc(s)}"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><span>${label}</span></a>`;
-  }).join("")}</div></div>`;
-}
+      const color = FAVICON_COLORS[hash % FAVICON_COLORS.length];
+      const letter = name.trim().charAt(0).toUpperCase() || "?";
 
-function renderPager(page) {
-  const colors = ["b", "r", "y", "b", "g", "r"];
-  const n = 10;
-  let h = `<div class="pager">`;
-  if (page > 1) h += `<div class="nav" data-page="${page - 1}"><span class="arrow">‹</span><span>이전</span></div>`;
-  h += `<div class="pl cur" style="cursor:default"><span class="letter logo"><span class="b">G</span></span><span class="num"></span></div>`;
-  for (let i = 1; i <= n; i++) {
-    const c = i === page ? "r" : "y";
-    h += `<div class="pl ${i === page ? "cur" : ""}" data-page="${i}"><span class="letter logo"><span class="${c}">o</span></span><span class="num">${i}</span></div>`;
-  }
-  h += `<div class="pl cur" style="cursor:default"><span class="letter logo"><span class="b">g</span><span class="g">l</span><span class="r">e</span></span><span class="num"></span></div>`;
-  if (page < n) h += `<div class="nav" data-page="${page + 1}"><span class="arrow">›</span><span>다음</span></div>`;
-  return h + `</div>`;
-}
+      return `<div class="favicon"><span style="background: ${color}">${escapeHtml(letter)}</span></div>`;
+    }
 
-function render(data, q, page, elapsed) {
-  const secs = (elapsed / 1000).toFixed(2);
-  const total = data.total || "약 1,000,000개";
-  let h = `<div class="stats">${page > 1 ? `${page}페이지 / ` : ""}검색결과 ${esc(total)} (${secs}초)</div>`;
-  const raw = Array.isArray(data.results) ? data.results : [];
-  const chunks = splitAnswer(data.answer, raw.length);
-  const results = data.answer ? raw.slice(0, chunks.length).map((r, i) => ({ ...r, snippet: chunks[i] })) : raw;
-  results.forEach((r, i) => {
-    h += renderResult(r);
-    if (i === 1 && page === 1) h += renderPaa(data.people_also_ask);
-  });
-  if (results.length < 2 && page === 1) h += renderPaa(data.people_also_ask);
-  h += renderRelated(data.related, q);
-  h += renderPager(page);
-  $("#results").innerHTML = h;
-}
+    function splitAnswer(text, pieceCount) {
+      const sentences = String(text || "")
+        .replace(/\s+/g, " ")
+        .trim()
+        .split(/(?<=[.!?。])\s+/)
+        .filter(Boolean);
 
-function renderError(e, q) {
-  if (e.code === "NO_KEY") {
-    $("#results").innerHTML = `<div class="err">검색하려면 Groq API 키가 필요합니다.<small>오른쪽 위의 프로필 아이콘을 눌러 키를 입력하세요.</small></div>`;
-    pendingSearch = q;
-    return;
-  }
-  $("#results").innerHTML = `<div class="err"><b>${esc(q)}</b>에 대한 결과를 불러오지 못했습니다.<br>잠시 후 다시 시도해 주세요.<small>${esc(e.message)}</small></div>`;
-}
+      if (sentences.length === 0 || pieceCount < 1) {
+        return [];
+      }
 
-function loadbar(state) {
-  const b = $("#loadbar");
-  if (state === "start") { b.className = "loadbar"; void b.offsetWidth; b.className = "loadbar go"; }
-  else { b.className = "loadbar go done"; }
-}
+      const totalLength = sentences.reduce((sum, sentence) => sum + sentence.length, 0);
+      const pieces = [];
+      let currentPiece = [];
+      let lengthSoFar = 0;
 
-async function search(q, page = 1) {
-  q = q.trim();
-  if (!q) return;
-  showSerp(q);
-  window.scrollTo(0, 0);
-  const id = ++reqId;
-  const ck = `${page}|${q}`;
-  const t0 = performance.now();
-  if (cache.has(ck)) { const c = cache.get(ck); render(c.data, q, page, c.elapsed); return; }
-  $("#results").innerHTML = skeleton();
-  loadbar("start");
-  try {
-    const data = await fetchSerp(q, page);
-    const elapsed = Math.min(performance.now() - t0, 900) * 0.6 + 120;
-    cache.set(ck, { data, elapsed });
-    if (id === reqId) render(data, q, page, elapsed);
-  } catch (e) {
-    if (id === reqId) renderError(e, q);
-  } finally {
-    if (id === reqId) loadbar("done");
-  }
-}
+      for (const sentence of sentences) {
+        currentPiece.push(sentence);
+        lengthSoFar += sentence.length;
 
-function showSerp(q) {
-  $("#home").hidden = true;
-  $("#serp").hidden = false;
-  $("#serpQ").value = q;
-  document.title = `${q} - Google 검색`;
-}
+        const reachedTarget = lengthSoFar >= (totalLength * (pieces.length + 1)) / pieceCount;
+        const hasPiecesLeft = pieces.length < pieceCount - 1;
 
-function showHome() {
-  $("#serp").hidden = true;
-  $("#home").hidden = false;
-  $("#homeQ").value = "";
-  document.title = "Google";
-  $("#homeQ").focus();
-}
+        if (reachedTarget && hasPiecesLeft) {
+          pieces.push(currentPiece.join(" "));
+          currentPiece = [];
+        }
+      }
 
-function go(q, page = 1) {
-  q = q.trim();
-  if (!q) return;
-  const hash = `#q=${encodeURIComponent(q)}${page > 1 ? `&p=${page}` : ""}`;
-  if (location.hash === hash) search(q, page);
-  else location.hash = hash;
-}
+      if (currentPiece.length > 0) {
+        pieces.push(currentPiece.join(" "));
+      }
 
-function route() {
-  const p = new URLSearchParams(location.hash.slice(1));
-  const q = p.get("q");
-  if (q) search(q, Math.max(1, parseInt(p.get("p") || "1", 10) || 1));
-  else showHome();
-}
+      return pieces.map(balanceBoldMarkers);
+    }
 
-async function fillModels() {
-  const sel = $("#modelInput");
-  const key = $("#keyInput").value.trim();
-  const saved = store.get("groq_model", "");
-  const setOptions = (ids, note) => {
-    sel.innerHTML = `<option value="">${note}</option>` + ids.map(id => `<option value="${esc(id)}">${esc(id)}</option>`).join("");
-    sel.value = ids.includes(saved) ? saved : "";
-  };
-  if (!key) { setOptions([], "자동 선택"); return; }
-  setOptions(saved ? [saved] : [], "모델 목록 불러오는 중…");
-  try {
-    const ids = await listModels(key);
-    setOptions(ids, `자동 선택 (${pickModel(ids) || "없음"})`);
-  } catch {
-    setOptions(saved ? [saved] : [], "자동 선택 (목록을 불러오지 못함)");
-  }
-}
+    function balanceBoldMarkers(text) {
+      const markerCount = (text.match(/\*\*/g) || []).length;
+      return markerCount % 2 === 0 ? text : text.replace(/\*\*(?!.*\*\*)/, "");
+    }
 
-function openModal() {
-  $("#keyInput").value = store.get("groq_key", "");
-  $("#modal").hidden = false;
-  fillModels();
-  setTimeout(() => $("#keyInput").focus(), 0);
-}
-function closeModal() { $("#modal").hidden = true; }
+    async function listModels(apiKey) {
+      const response = await fetch(`${GROQ_API_URL}/models`, {
+        headers: { Authorization: `Bearer ${apiKey}` },
+      });
 
-$("#homeForm").addEventListener("submit", e => { e.preventDefault(); go($("#homeQ").value); });
-$("#btnSearch").addEventListener("click", () => go($("#homeQ").value));
-$("#btnLucky").addEventListener("click", () => go($("#homeQ").value || "오늘의 운세"));
-$("#serpForm").addEventListener("submit", e => { e.preventDefault(); $("#serpQ").blur(); go($("#serpQ").value); });
-$("#clearBtn").addEventListener("click", () => { $("#serpQ").value = ""; $("#serpQ").focus(); });
-$$("[data-home]").forEach(el => el.addEventListener("click", () => { location.hash = ""; showHome(); }));
-$$("[data-settings]").forEach(el => el.addEventListener("click", e => { e.preventDefault(); openModal(); }));
-$("#keyInput").addEventListener("change", fillModels);
-$("#modalCancel").addEventListener("click", () => { pendingSearch = null; closeModal(); });
-$("#modal").addEventListener("click", e => { if (e.target.id === "modal") { pendingSearch = null; closeModal(); } });
-$("#modalForm").addEventListener("submit", e => {
-  e.preventDefault();
-  store.set("groq_key", $("#keyInput").value.trim());
-  store.set("groq_model", $("#modelInput").value);
-  cache.clear();
-  closeModal();
-  if (pendingSearch) { const q = pendingSearch; pendingSearch = null; search(q); }
-});
-document.addEventListener("keydown", e => {
-  if (e.key === "Escape" && !$("#modal").hidden) closeModal();
-  if (e.key === "/" && document.activeElement.tagName !== "INPUT") {
-    e.preventDefault();
-    ($("#serp").hidden ? $("#homeQ") : $("#serpQ")).focus();
-  }
-});
-$("#results").addEventListener("click", e => {
-  const paa = e.target.closest(".paa-q");
-  if (paa) { paa.parentElement.classList.toggle("open"); return; }
-  const pg = e.target.closest("[data-page]");
-  if (pg && !pg.classList.contains("cur")) { go($("#serpQ").value, parseInt(pg.dataset.page, 10)); return; }
-  const qe = e.target.closest("[data-q]");
-  if (qe) go(qe.dataset.q);
-});
-window.addEventListener("hashchange", route);
-route();
-</script>
+      if (!response.ok) {
+        throw new Error(`모델 목록 HTTP ${response.status}`);
+      }
+
+      const body = await response.json();
+
+      return (body.data || [])
+        .filter((model) => model.active !== false && !NON_CHAT_MODEL_PATTERN.test(model.id))
+        .map((model) => model.id)
+        .sort();
+    }
+
+    function pickModel(modelIds) {
+      return PREFERRED_MODELS.find((id) => modelIds.includes(id))
+        || modelIds.find((id) => CHAT_MODEL_PATTERN.test(id))
+        || modelIds[0];
+    }
+
+    async function resolveModel(apiKey, forceRefresh) {
+      const savedModel = storage.get(STORAGE_KEY_MODEL);
+
+      if (savedModel && !forceRefresh) {
+        return savedModel;
+      }
+
+      const modelIds = await listModels(apiKey);
+
+      if (modelIds.length === 0) {
+        throw new Error("사용 가능한 Groq 채팅 모델이 없습니다.");
+      }
+
+      const model = pickModel(modelIds);
+      storage.set(STORAGE_KEY_MODEL, model);
+      return model;
+    }
+
+    function buildUserPrompt(query, page) {
+      if (page === 1) {
+        return `검색어: ${query}`;
+      }
+
+      return `검색어: ${query}\n`
+        + `(${page}페이지 결과입니다. 1페이지와 다른, 덜 유명한 사이트들의 결과를 생성하고, `
+        + `answer에는 이 주제에 대한 더 깊이 있는 추가 설명을 쓰세요.)`;
+    }
+
+    async function fetchSearchResults(query, page) {
+      const apiKey = storage.get(STORAGE_KEY_API_KEY);
+
+      if (!apiKey) {
+        throw Object.assign(new Error("NO_KEY"), { code: "NO_KEY" });
+      }
+
+      const userPrompt = buildUserPrompt(query, page);
+
+      try {
+        const model = await resolveModel(apiKey, false);
+        return await requestCompletion(apiKey, model, userPrompt);
+      } catch (error) {
+        if (!error.isModelError) {
+          throw error;
+        }
+
+        const fallbackModel = await resolveModel(apiKey, true);
+        return await requestCompletion(apiKey, fallbackModel, userPrompt);
+      }
+    }
+
+    async function requestCompletion(apiKey, model, userPrompt) {
+      const response = await fetch(`${GROQ_API_URL}/chat/completions`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+          model,
+          temperature: TEMPERATURE,
+          max_tokens: MAX_TOKENS,
+          response_format: { type: "json_object" },
+          messages: [
+            { role: "system", content: SYSTEM_PROMPT },
+            { role: "user", content: userPrompt },
+          ],
+        }),
+      });
+
+      if (!response.ok) {
+        throw await createApiError(response);
+      }
+
+      const body = await response.json();
+      const content = body.choices?.[0]?.message?.content || "{}";
+      const jsonMatch = content.match(/\{[\s\S]*\}/);
+
+      return JSON.parse(jsonMatch ? jsonMatch[0] : content);
+    }
+
+    async function createApiError(response) {
+      let message = `HTTP ${response.status}`;
+      let errorCode = "";
+
+      try {
+        const body = await response.json();
+        message += ` - ${body.error?.message || ""}`;
+        errorCode = body.error?.code || "";
+      } catch {}
+
+      const isModelError = response.status === 404 || MODEL_ERROR_PATTERN.test(errorCode + message);
+
+      return Object.assign(new Error(message), { code: response.status, isModelError });
+    }
+
+    function renderSkeleton() {
+      const block = `
+        <div class="skeleton-line is-site"></div>
+        <div class="skeleton-line is-title"></div>
+        <div class="skeleton-line is-full"></div>
+        <div class="skeleton-line is-partial"></div>`;
+
+      return `<div class="result-stats">&nbsp;</div><div class="skeleton">${block.repeat(4)}</div>`;
+    }
+
+    function renderSource(site, url, query) {
+      return `
+        <div class="result-source" data-query="${escapeHtml(query)}">
+          ${renderFavicon(site)}
+          <div class="result-source-text">
+            <span class="result-site">${escapeHtml(site)}</span>
+            <span class="result-url">${escapeHtml(url)}</span>
+          </div>
+          <span class="result-more">⋮</span>
+        </div>`;
+    }
+
+    function renderResult(result) {
+      const date = result.date ? `<span class="result-date">${escapeHtml(result.date)} — </span>` : "";
+
+      return `
+        <div class="result">
+          ${renderSource(result.site, result.url, result.title)}
+          <h3 class="result-title" data-query="${escapeHtml(result.title)}">${escapeHtml(result.title)}</h3>
+          <div class="result-snippet">${date}${formatEmphasis(result.snippet, "em")}</div>
+        </div>`;
+    }
+
+    function renderQuestion(item) {
+      const source = item.site ? renderSource(item.site, item.url || "", item.title || item.q) : "";
+      const title = item.site && item.title
+        ? `<h3 class="result-title" data-query="${escapeHtml(item.title)}">${escapeHtml(item.title)}</h3>`
+        : "";
+
+      return `
+        <div class="question">
+          <div class="question-header">
+            <span>${escapeHtml(item.q)}</span>
+            ${icon("chevron-down")}
+          </div>
+          <div class="question-answer">
+            ${formatEmphasis(item.a, "b")}
+            ${source}
+            ${title}
+          </div>
+        </div>`;
+    }
+
+    function renderQuestions(items) {
+      if (!items?.length) {
+        return "";
+      }
+
+      return `
+        <div class="questions">
+          <h2 class="section-title">다른 사람들이 함께 찾은 질문</h2>
+          ${items.map(renderQuestion).join("")}
+        </div>`;
+    }
+
+    function highlightSuggestion(suggestion, query) {
+      const matchIndex = suggestion.toLowerCase().indexOf(query.toLowerCase());
+
+      if (matchIndex < 0) {
+        return `<b>${escapeHtml(suggestion)}</b>`;
+      }
+
+      const matchEnd = matchIndex + query.length;
+      const before = escapeHtml(suggestion.slice(0, matchEnd));
+      const after = escapeHtml(suggestion.slice(matchEnd));
+
+      return `${before}<b>${after}</b>`;
+    }
+
+    function renderRelated(suggestions, query) {
+      if (!suggestions?.length) {
+        return "";
+      }
+
+      const chips = suggestions.map((item) => {
+        const suggestion = String(item);
+        return `
+          <a class="related-chip" data-query="${escapeHtml(suggestion)}">
+            ${icon("search", 20)}
+            <span>${highlightSuggestion(suggestion, query)}</span>
+          </a>`;
+      });
+
+      return `
+        <div class="related">
+          <h2 class="section-title">관련 검색어</h2>
+          <div class="related-grid">${chips.join("")}</div>
+        </div>`;
+    }
+
+    function renderPagerItem(letters, page, currentPage) {
+      if (page === null) {
+        return `
+          <div class="pager-item is-static">
+            <span class="logo pager-letter">${letters}</span>
+            <span class="pager-number"></span>
+          </div>`;
+      }
+
+      const stateClass = page === currentPage ? "is-current" : "";
+
+      return `
+        <div class="pager-item ${stateClass}" data-page="${page}">
+          <span class="logo pager-letter">${letters}</span>
+          <span class="pager-number">${page}</span>
+        </div>`;
+    }
+
+    function renderPagerNav(page, arrow, label) {
+      return `
+        <div class="pager-nav" data-page="${page}">
+          <span class="pager-arrow">${arrow}</span>
+          <span>${label}</span>
+        </div>`;
+    }
+
+    function renderPager(currentPage) {
+      let html = "";
+
+      if (currentPage > 1) {
+        html += renderPagerNav(currentPage - 1, "‹", "이전");
+      }
+
+      html += renderPagerItem(`<span class="blue">G</span>`, null, currentPage);
+
+      for (let page = 1; page <= PAGE_COUNT; page++) {
+        const colorClass = page === currentPage ? "red" : "yellow";
+        html += renderPagerItem(`<span class="${colorClass}">o</span>`, page, currentPage);
+      }
+
+      html += renderPagerItem(`<span class="blue">g</span><span class="green">l</span><span class="red">e</span>`, null, currentPage);
+
+      if (currentPage < PAGE_COUNT) {
+        html += renderPagerNav(currentPage + 1, "›", "다음");
+      }
+
+      return `<div class="pager">${html}</div>`;
+    }
+
+    function attachSnippets(data) {
+      const results = Array.isArray(data.results) ? data.results : [];
+
+      if (!data.answer) {
+        return results;
+      }
+
+      const snippets = splitAnswer(data.answer, results.length);
+
+      return results
+        .slice(0, snippets.length)
+        .map((result, index) => ({ ...result, snippet: snippets[index] }));
+    }
+
+    function renderResults(data, query, page, elapsedMs) {
+      const seconds = (elapsedMs / 1000).toFixed(2);
+      const total = data.total || "약 1,000,000개";
+      const pageLabel = page > 1 ? `${page}페이지 / ` : "";
+      const results = attachSnippets(data);
+      const showQuestions = page === 1;
+
+      let html = `<div class="result-stats">${pageLabel}검색결과 ${escapeHtml(total)} (${seconds}초)</div>`;
+
+      results.forEach((result, index) => {
+        html += renderResult(result);
+
+        if (showQuestions && index === 1) {
+          html += renderQuestions(data.people_also_ask);
+        }
+      });
+
+      if (showQuestions && results.length < 2) {
+        html += renderQuestions(data.people_also_ask);
+      }
+
+      html += renderRelated(data.related, query);
+      html += renderPager(page);
+
+      elements.results.innerHTML = html;
+    }
+
+    function renderError(error, query) {
+      if (error.code === "NO_KEY") {
+        pendingQuery = query;
+        elements.results.innerHTML = `
+          <div class="error-message">
+            검색하려면 Groq API 키가 필요합니다.
+            <small>오른쪽 위의 프로필 아이콘을 눌러 키를 입력하세요.</small>
+          </div>`;
+        return;
+      }
+
+      elements.results.innerHTML = `
+        <div class="error-message">
+          <b>${escapeHtml(query)}</b>에 대한 결과를 불러오지 못했습니다.<br>
+          잠시 후 다시 시도해 주세요.
+          <small>${escapeHtml(error.message)}</small>
+        </div>`;
+    }
+
+    function startLoadingBar() {
+      const bar = elements.loadingBar;
+      bar.className = "loading-bar";
+      void bar.offsetWidth;
+      bar.className = "loading-bar is-loading";
+    }
+
+    function finishLoadingBar() {
+      elements.loadingBar.className = "loading-bar is-done";
+    }
+
+    async function search(rawQuery, page = 1) {
+      const query = rawQuery.trim();
+
+      if (!query) {
+        return;
+      }
+
+      showSerp(query);
+      window.scrollTo(0, 0);
+
+      const requestId = ++latestRequestId;
+      const cacheKey = `${page}|${query}`;
+      const startedAt = performance.now();
+
+      if (resultCache.has(cacheKey)) {
+        const cached = resultCache.get(cacheKey);
+        renderResults(cached.data, query, page, cached.elapsedMs);
+        return;
+      }
+
+      elements.results.innerHTML = renderSkeleton();
+      startLoadingBar();
+
+      try {
+        const data = await fetchSearchResults(query, page);
+        const elapsedMs = Math.min(performance.now() - startedAt, 900) * 0.6 + 120;
+        resultCache.set(cacheKey, { data, elapsedMs });
+
+        if (requestId === latestRequestId) {
+          renderResults(data, query, page, elapsedMs);
+        }
+      } catch (error) {
+        if (requestId === latestRequestId) {
+          renderError(error, query);
+        }
+      } finally {
+        if (requestId === latestRequestId) {
+          finishLoadingBar();
+        }
+      }
+    }
+
+    function showSerp(query) {
+      elements.home.hidden = true;
+      elements.serp.hidden = false;
+      elements.serpQuery.value = query;
+      document.title = `${query} - Google 검색`;
+    }
+
+    function showHome() {
+      elements.serp.hidden = true;
+      elements.home.hidden = false;
+      elements.homeQuery.value = "";
+      document.title = "Google";
+      elements.homeQuery.focus();
+    }
+
+    function navigate(rawQuery, page = 1) {
+      const query = rawQuery.trim();
+
+      if (!query) {
+        return;
+      }
+
+      const pageParam = page > 1 ? `&p=${page}` : "";
+      const hash = `#q=${encodeURIComponent(query)}${pageParam}`;
+
+      if (location.hash === hash) {
+        search(query, page);
+      } else {
+        location.hash = hash;
+      }
+    }
+
+    function handleRoute() {
+      const params = new URLSearchParams(location.hash.slice(1));
+      const query = params.get("q");
+
+      if (!query) {
+        showHome();
+        return;
+      }
+
+      const page = Math.max(1, parseInt(params.get("p") || "1", 10) || 1);
+      search(query, page);
+    }
+
+    async function populateModelSelect() {
+      const select = elements.modelSelect;
+      const apiKey = elements.apiKeyInput.value.trim();
+      const savedModel = storage.get(STORAGE_KEY_MODEL);
+      const savedOnly = savedModel ? [savedModel] : [];
+
+      const setOptions = (modelIds, autoLabel) => {
+        const options = modelIds
+          .map((id) => `<option value="${escapeHtml(id)}">${escapeHtml(id)}</option>`)
+          .join("");
+
+        select.innerHTML = `<option value="">${autoLabel}</option>${options}`;
+        select.value = modelIds.includes(savedModel) ? savedModel : "";
+      };
+
+      if (!apiKey) {
+        setOptions([], "자동 선택");
+        return;
+      }
+
+      setOptions(savedOnly, "모델 목록 불러오는 중…");
+
+      try {
+        const modelIds = await listModels(apiKey);
+        setOptions(modelIds, `자동 선택 (${pickModel(modelIds) || "없음"})`);
+      } catch {
+        setOptions(savedOnly, "자동 선택 (목록을 불러오지 못함)");
+      }
+    }
+
+    function openSettings() {
+      elements.apiKeyInput.value = storage.get(STORAGE_KEY_API_KEY);
+      elements.settingsModal.hidden = false;
+      populateModelSelect();
+      setTimeout(() => elements.apiKeyInput.focus(), 0);
+    }
+
+    function closeSettings() {
+      pendingQuery = null;
+      elements.settingsModal.hidden = true;
+    }
+
+    function saveSettings(event) {
+      event.preventDefault();
+
+      storage.set(STORAGE_KEY_API_KEY, elements.apiKeyInput.value.trim());
+      storage.set(STORAGE_KEY_MODEL, elements.modelSelect.value);
+      resultCache.clear();
+
+      const queryToRetry = pendingQuery;
+      closeSettings();
+
+      if (queryToRetry) {
+        search(queryToRetry);
+      }
+    }
+
+    function handleResultsClick(event) {
+      const questionHeader = event.target.closest(".question-header");
+      if (questionHeader) {
+        questionHeader.parentElement.classList.toggle("is-open");
+        return;
+      }
+
+      const pageLink = event.target.closest("[data-page]");
+      if (pageLink) {
+        if (!pageLink.classList.contains("is-current")) {
+          navigate(elements.serpQuery.value, parseInt(pageLink.dataset.page, 10));
+        }
+        return;
+      }
+
+      const queryLink = event.target.closest("[data-query]");
+      if (queryLink) {
+        navigate(queryLink.dataset.query);
+      }
+    }
+
+    function handleKeydown(event) {
+      if (event.key === "Escape" && !elements.settingsModal.hidden) {
+        closeSettings();
+        return;
+      }
+
+      if (event.key === "/" && document.activeElement.tagName !== "INPUT") {
+        event.preventDefault();
+        const input = elements.serp.hidden ? elements.homeQuery : elements.serpQuery;
+        input.focus();
+      }
+    }
+
+    elements.homeForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      navigate(elements.homeQuery.value);
+    });
+
+    elements.searchButton.addEventListener("click", () => {
+      navigate(elements.homeQuery.value);
+    });
+
+    elements.luckyButton.addEventListener("click", () => {
+      navigate(elements.homeQuery.value || "오늘의 운세");
+    });
+
+    elements.serpForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      elements.serpQuery.blur();
+      navigate(elements.serpQuery.value);
+    });
+
+    elements.clearButton.addEventListener("click", () => {
+      elements.serpQuery.value = "";
+      elements.serpQuery.focus();
+    });
+
+    $$("[data-go-home]").forEach((logo) => {
+      logo.addEventListener("click", () => {
+        location.hash = "";
+        showHome();
+      });
+    });
+
+    $$("[data-open-settings]").forEach((button) => {
+      button.addEventListener("click", openSettings);
+    });
+
+    elements.apiKeyInput.addEventListener("change", populateModelSelect);
+    elements.settingsCancel.addEventListener("click", closeSettings);
+    elements.settingsForm.addEventListener("submit", saveSettings);
+
+    elements.settingsModal.addEventListener("click", (event) => {
+      if (event.target === elements.settingsModal) {
+        closeSettings();
+      }
+    });
+
+    elements.results.addEventListener("click", handleResultsClick);
+    document.addEventListener("keydown", handleKeydown);
+    window.addEventListener("hashchange", handleRoute);
+
+    handleRoute();
+  </script>
 </body>
 </html>
