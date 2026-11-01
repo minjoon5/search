@@ -1878,9 +1878,10 @@ Return 8 results, 4 people_also_ask items, 8 related searches.`;
 
     function updatePageFades() {
       const page = document.documentElement;
-      const scrollTop = page.scrollTop;
-      const scrollBottom = page.scrollHeight - page.clientHeight - scrollTop;
-      const isScrollable = page.scrollHeight - page.clientHeight > 1;
+      const viewportHeight = Math.max(window.innerHeight, window.visualViewport?.height || 0);
+      const scrollTop = window.scrollY;
+      const scrollBottom = page.scrollHeight - viewportHeight - scrollTop;
+      const isScrollable = page.scrollHeight - viewportHeight > 1;
 
       elements.pageFadeTop.classList.toggle("is-visible", isScrollable && scrollTop > 1);
       elements.pageFadeBottom.classList.toggle("is-visible", isScrollable && scrollBottom > 1);
@@ -1898,6 +1899,8 @@ Return 8 results, 4 people_also_ask items, 8 related searches.`;
     function setUpScrollFades() {
       window.addEventListener("scroll", updatePageFades, { passive: true });
       window.addEventListener("resize", updatePageFades);
+      window.visualViewport?.addEventListener("resize", updatePageFades);
+      window.visualViewport?.addEventListener("scroll", updatePageFades);
       new ResizeObserver(updatePageFades).observe(document.body);
       updatePageFades();
 
