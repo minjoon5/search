@@ -1189,8 +1189,8 @@ Rules:
 - Results must look like real web pages from plausible, well-known sites relevant to the query (e.g. 나무위키, 위키백과, 네이버 블로그, 티스토리, 브런치, 뉴스사, 공식 사이트, YouTube, Reddit, Stack Overflow, etc. when appropriate).
 - "url" is a Google-style breadcrumb like "https://namu.wiki › w › 주제" or "https://www.example.com › path › page".
 - "date" is optional, formatted like "2024. 3. 15." or empty string.
-- "answer" is ONE continuous, accurate, well-structured answer to the query written as plain flowing prose: 12-16 sentences, about 1,200-1,500 characters, no headings, no bullet lists, no line breaks. Each sentence must end with sentence punctuation followed by a space. Wrap a few key terms in **double asterisks**. This answer will be cut into pieces and shown as the snippets of the results in order, so it must read naturally from start to finish.
-- Results do NOT have their own snippet; titles should still fit the topic of the answer.
+- "answer" is ONE continuous, accurate, well-structured answer to the query written as a single block of plain flowing prose: about 1,200-1,500 characters, no headings, no bullet lists, no line breaks, no paragraph breaks. Wrap a few key terms in **double asterisks**. This answer will be cut into equal-length pieces at arbitrary points (even in the middle of a sentence) and shown as the snippets of the results in order, so it must read as one uninterrupted text from start to finish.
+- Results do NOT have their own snippet. The answer text does not need to match each result's title; titles are only for appearance.
 - Be accurate and helpful; the answer should genuinely answer the query.
 JSON schema:
 {"total":"약 12,300,000개","answer":"...","results":[{"site":"사이트 이름","url":"https://... › ...","title":"페이지 제목","date":""}],"people_also_ask":[{"q":"질문","a":"2-3문장 답변","site":"사이트 이름","url":"https://... › ...","title":"페이지 제목"}],"related":["관련 검색어"]}
@@ -1275,44 +1275,54 @@ Return 8 results, 4 people_also_ask items, 8 related searches.`;
     }
 
     function splitAnswer(text, pieceCount) {
-      const sentences = String(text || "")
-        .replace(/\s+/g, " ")
-        .trim()
-        .split(/(?<=[.!?。])\s+/)
-        .filter(Boolean);
+      const fullText = String(text || "").replace(/\s+/g, " ").trim();
 
-      if (sentences.length === 0 || pieceCount < 1) {
+      if (!fullText || pieceCount < 1) {
         return [];
       }
 
-      const totalLength = sentences.reduce((sum, sentence) => sum + sentence.length, 0);
       const pieces = [];
-      let currentPiece = [];
-      let lengthSoFar = 0;
+      let start = 0;
 
-      for (const sentence of sentences) {
-        currentPiece.push(sentence);
-        lengthSoFar += sentence.length;
+      for (let index = 1; index < pieceCount; index++) {
+        const target = Math.round((fullText.length * index) / pieceCount);
+        let cut = target;
+        const spaceAfter = fullText.indexOf(" ", target);
+        const spaceBefore = fullText.lastIndexOf(" ", target);
 
-        const reachedTarget = lengthSoFar >= (totalLength * (pieces.length + 1)) / pieceCount;
-        const hasPiecesLeft = pieces.length < pieceCount - 1;
-
-        if (reachedTarget && hasPiecesLeft) {
-          pieces.push(currentPiece.join(" "));
-          currentPiece = [];
+        if (spaceAfter !== -1 && (spaceBefore === -1 || spaceAfter - target <= target - spaceBefore)) {
+          cut = spaceAfter;
+        } else if (spaceBefore > start) {
+          cut = spaceBefore;
         }
+
+        if (cut <= start) {
+          continue;
+        }
+
+        pieces.push(fullText.slice(start, cut).trim());
+        start = cut;
       }
 
-      if (currentPiece.length > 0) {
-        pieces.push(currentPiece.join(" "));
-      }
+      pieces.push(fullText.slice(start).trim());
 
-      return pieces.map(balanceBoldMarkers);
+      return carryBoldMarkers(pieces.filter(Boolean));
     }
 
-    function balanceBoldMarkers(text) {
-      const markerCount = (text.match(/\*\*/g) || []).length;
-      return markerCount % 2 === 0 ? text : text.replace(/\*\*(?!.*\*\*)/, "");
+    function carryBoldMarkers(pieces) {
+      let isBoldOpen = false;
+
+      return pieces.map((piece) => {
+        let text = isBoldOpen ? `**${piece}` : piece;
+        const markerCount = (text.match(/\*\*/g) || []).length;
+        isBoldOpen = markerCount % 2 === 1;
+
+        if (isBoldOpen) {
+          text += "**";
+        }
+
+        return text;
+      });
     }
 
     async function listModels(apiKey) {
